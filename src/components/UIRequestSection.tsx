@@ -65,7 +65,7 @@ ${brandingDocuments}`;
   };
 
   return (
-    <Card id="ui-request-section" className="template-section w-full max-w-2xl mx-auto bg-card">
+    <Card id="ui-request-section" className="template-section w-full max-w-2xl mx-auto">
       <CardHeader>
         <CardTitle>UI Request</CardTitle>
       </CardHeader>
