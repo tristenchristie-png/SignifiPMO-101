@@ -315,7 +315,7 @@ const UATExcelGeneratorSection: React.FC = () => {
     // Basic validation for checklist items
     const allChecklistItemsStatusFilled = currentTemplate.checklistItems.every(item => checklistData[item]?.status);
     if (!allChecklistItemsStatusFilled) {
-      showError("Please set a status (Pass/Fail) for all checklist items.");
+      showError("Please set a status (Pass/Fail/N/A) for all checklist items.");
       return;
     }
 
@@ -423,6 +423,7 @@ const UATExcelGeneratorSection: React.FC = () => {
                         <SelectContent>
                           <SelectItem value="Pass">Pass</SelectItem>
                           <SelectItem value="Fail">Fail</SelectItem>
+                          <SelectItem value="N/A">N/A</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
