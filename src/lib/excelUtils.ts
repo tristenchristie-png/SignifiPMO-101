@@ -68,43 +68,68 @@ export const generateUATExcel = (
     },
   };
 
-  const ws_data_rows: any[][] = [
-    [{ v: "UAT Test Plan", s: boldTitleStyle }],
-    [],
-    [{ v: "Project:", s: defaultCellStyle }, { v: projectName, s: defaultCellStyle }],
-    [{ v: "Owner:", s: defaultCellStyle }, { v: ownerName, s: defaultCellStyle }],
-    [{ v: "Machine Type:", s: defaultCellStyle }, { v: machineType, s: defaultCellStyle }],
-    [],
-  ];
+  const ws_data_rows: any[][] = [];
+  const merges: XLSX.Range[] = [];
+  let currentRow = 0; // Keep track of the current row index (0-based)
 
-  // Add Machine Image section prominently
+  // UAT Test Plan
+  ws_data_rows.push([{ v: "UAT Test Plan", s: boldTitleStyle }]);
+  merges.push(XLSX.utils.decode_range(`A${currentRow + 1}:D${currentRow + 1}`));
+  currentRow++;
+
+  ws_data_rows.push([]); // Empty row
+  currentRow++;
+
+  // Project, Owner, Machine Type
+  ws_data_rows.push([{ v: "Project:", s: defaultCellStyle }, { v: projectName, s: defaultCellStyle }]);
+  currentRow++;
+  ws_data_rows.push([{ v: "Owner:", s: defaultCellStyle }, { v: ownerName, s: defaultCellStyle }]);
+  currentRow++;
+  ws_data_rows.push([{ v: "Machine Type:", s: defaultCellStyle }, { v: machineType, s: defaultCellStyle }]);
+  currentRow++;
+
+  ws_data_rows.push([]); // Empty row
+  currentRow++;
+
+  // Machine Image section
   if (machineImageUrl) {
-    ws_data_rows.push([{ v: "Machine Image (for reference):", s: boldTitleStyle }]);
+    ws_data_rows.push([null, null, { v: "Machine Image:", s: boldTitleStyle }]); // C column
+    merges.push(XLSX.utils.decode_range(`C${currentRow + 1}:D${currentRow + 1}`));
+    currentRow++;
     ws_data_rows.push([
-      { v: machineImageUrl, s: urlCellStyle, l: { Target: machineImageUrl, Tooltip: machineImageUrl } }
+      null, null, { v: "Please insert machine image here manually. Reference URL:", s: noteCellStyle, l: { Target: machineImageUrl, Tooltip: machineImageUrl } } // C column
     ]);
-    ws_data_rows.push([
-      { v: "Please insert machine image here manually.", s: noteCellStyle }
-    ]);
-    ws_data_rows.push([]);
+    merges.push(XLSX.utils.decode_range(`C${currentRow + 1}:D${currentRow + 1}`));
+    currentRow++;
+    ws_data_rows.push([]); // Empty row
+    currentRow++;
   }
 
   // Configuration Fields section
   ws_data_rows.push([{ v: "Configuration Fields:", s: boldTitleStyle }]);
+  merges.push(XLSX.utils.decode_range(`A${currentRow + 1}:D${currentRow + 1}`));
+  currentRow++;
   for (const key in configData) {
     const label = key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()) + ":";
     const value = configData[key];
     ws_data_rows.push([{ v: label, s: defaultCellStyle }, { v: value, s: defaultCellStyle }]);
+    currentRow++;
   }
 
-  ws_data_rows.push([]);
+  ws_data_rows.push([]); // Empty row
+  currentRow++;
+
+  // UAT Checklist section
   ws_data_rows.push([{ v: "UAT Checklist:", s: boldTitleStyle }]);
+  merges.push(XLSX.utils.decode_range(`A${currentRow + 1}:D${currentRow + 1}`));
+  currentRow++;
   ws_data_rows.push([
     { v: "Test Case ID", s: headerCellStyle },
     { v: "Description", s: headerCellStyle },
     { v: "Status (Pass/Fail/N/A)", s: headerCellStyle },
     { v: "Comments", s: headerCellStyle }
   ]);
+  currentRow++;
 
   // Add checklist items
   let testCaseId = 1;
@@ -115,24 +140,40 @@ export const generateUATExcel = (
       { v: checklistData[item].status, s: defaultCellStyle },
       { v: checklistData[item].comments, s: defaultCellStyle }
     ]);
+    currentRow++;
   }
 
-  ws_data_rows.push([]);
-  ws_data_rows.push([{ v: "Special Requirements:", s: boldTitleStyle }]);
-  ws_data_rows.push([{ v: specialRequirements, s: defaultCellStyle }]);
-  ws_data_rows.push([]);
-  ws_data_rows.push([{ v: "PM Signature:", s: boldTitleStyle }, { v: pmSignature, s: defaultCellStyle }]);
-  ws_data_rows.push([{ v: "Quality Signature:", s: boldTitleStyle }, { v: qualitySignature, s: defaultCellStyle }]);
+  ws_data_rows.push([]); // Empty row
+  currentRow++;
 
+  // Special Requirements
+  ws_data_rows.push([{ v: "Special Requirements:", s: boldTitleStyle }]);
+  merges.push(XLSX.utils.decode_range(`A${currentRow + 1}:D${currentRow + 1}`));
+  currentRow++;
+  ws_data_rows.push([{ v: specialRequirements, s: defaultCellStyle }]);
+  merges.push(XLSX.utils.decode_range(`A${currentRow + 1}:D${currentRow + 1}`));
+  currentRow++;
+
+  ws_data_rows.push([]); // Empty row
+  currentRow++;
+
+  // Signatures
+  ws_data_rows.push([{ v: "PM Signature:", s: boldTitleStyle }, { v: pmSignature, s: defaultCellStyle }]);
+  currentRow++;
+  ws_data_rows.push([{ v: "Quality Signature:", s: boldTitleStyle }, { v: qualitySignature, s: defaultCellStyle }]);
+  currentRow++;
 
   const ws = XLSX.utils.aoa_to_sheet(ws_data_rows);
 
+  // Apply merges
+  ws['!merges'] = merges;
+
   // Set column widths for better readability
   const wscols = [
-    { wch: 15 }, // Test Case ID / Label
-    { wch: 60 }, // Description / Value
-    { wch: 20 }, // Status
-    { wch: 50 }  // Comments
+    { wch: 15 }, // Column A: Test Case ID / Label
+    { wch: 60 }, // Column B: Description / Value
+    { wch: 20 }, // Column C: Status
+    { wch: 50 }  // Column D: Comments
   ];
   ws['!cols'] = wscols;
 
