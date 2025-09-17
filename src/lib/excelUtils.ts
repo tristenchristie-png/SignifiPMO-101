@@ -14,7 +14,7 @@ export const generateUATExcel = (
 ) => {
   // Define base styles
   const defaultCellStyle = {
-    font: { sz: 12 },
+    font: { sz: 12, color: { rgb: "000000" } }, // Set text color to black
     alignment: { vertical: "top", horizontal: "left", wrapText: true },
     border: {
       top: { style: "thin" },
@@ -25,7 +25,7 @@ export const generateUATExcel = (
   };
 
   const boldTitleStyle = {
-    font: { sz: 14, bold: true },
+    font: { sz: 14, bold: true, color: { rgb: "000000" } }, // Set text color to black
     alignment: { vertical: "top", horizontal: "left", wrapText: true },
     border: {
       top: { style: "thin" },
@@ -36,7 +36,7 @@ export const generateUATExcel = (
   };
 
   const headerCellStyle = {
-    font: { sz: 12, bold: true },
+    font: { sz: 12, bold: true, color: { rgb: "000000" } }, // Set text color to black
     alignment: { vertical: "top", horizontal: "left", wrapText: true },
     border: {
       top: { style: "thin" },
@@ -47,7 +47,7 @@ export const generateUATExcel = (
   };
 
   const urlCellStyle = {
-    font: { sz: 10, italic: true, color: { rgb: "0000FF" } },
+    font: { sz: 10, italic: true, color: { rgb: "0000FF" } }, // Keep URL color blue
     alignment: { vertical: "top", horizontal: "left", wrapText: true },
     border: {
       top: { style: "thin" },
@@ -58,7 +58,7 @@ export const generateUATExcel = (
   };
 
   const noteCellStyle = {
-    font: { sz: 10, italic: true },
+    font: { sz: 10, italic: true, color: { rgb: "000000" } }, // Set text color to black
     alignment: { vertical: "top", horizontal: "left", wrapText: true },
     border: {
       top: { style: "thin" },
