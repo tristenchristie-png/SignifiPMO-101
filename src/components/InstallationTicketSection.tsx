@@ -103,10 +103,10 @@ ${scopeOfWork}`;
 
   return (
     <Card id="installation-ticket-section" className="template-section w-full max-w-2xl mx-auto">
-      <CardHeader>
+      <CardHeader className="bg-secondary text-secondary-foreground">
         <CardTitle>Installation Ticket</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 p-6">
         <div>
           <Label htmlFor="salesOrder">1. Sales Order (SO)</Label>
           <Input id="salesOrder" value={salesOrder} onChange={(e) => setSalesOrder(e.target.value)} placeholder="Insert SO number" />
@@ -237,7 +237,7 @@ ${scopeOfWork}`;
           <Textarea id="scopeOfWork" value={scopeOfWork} onChange={(e) => setScopeOfWork(e.target.value)} placeholder="Describe the scope of work" rows={5} />
         </div>
         <div className="flex gap-2">
-          <Button onClick={generateInstallationEmail}>Generate Email</Button>
+          <Button onClick={generateInstallationEmail} variant="default">Generate Email</Button>
           <Button variant="outline" onClick={copyToClipboard}>Copy</Button>
         </div>
         {output && (

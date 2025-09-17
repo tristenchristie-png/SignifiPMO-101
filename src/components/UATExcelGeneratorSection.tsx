@@ -337,10 +337,10 @@ const UATExcelGeneratorSection: React.FC = () => {
 
   return (
     <Card id="uat-generator-section" className="template-section w-full max-w-3xl mx-auto">
-      <CardHeader>
+      <CardHeader className="bg-secondary text-secondary-foreground">
         <CardTitle>UAT Excel Generator</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-6 p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <Label htmlFor="uatProject">Project</Label>
@@ -461,7 +461,7 @@ const UATExcelGeneratorSection: React.FC = () => {
           </>
         )}
 
-        <Button onClick={handleGenerateExcel} className="w-full">Generate UAT Excel</Button>
+        <Button onClick={handleGenerateExcel} className="w-full" variant="default">Generate UAT Excel</Button>
       </CardContent>
     </Card>
   );

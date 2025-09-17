@@ -101,10 +101,10 @@ ${specialRequirements}`;
 
   return (
     <Card id="qa-checklist-section" className="template-section w-full max-w-2xl mx-auto">
-      <CardHeader>
+      <CardHeader className="bg-secondary text-secondary-foreground">
         <CardTitle>QA Checklist</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 p-6">
         <div>
           <Label htmlFor="qaBuild">Build Version</Label>
           <Input id="qaBuild" value={qaBuild} onChange={(e) => setQaBuild(e.target.value)} placeholder="e.g., 1.0.0-beta" />
@@ -245,7 +245,7 @@ ${specialRequirements}`;
           <Textarea id="specialRequirements" value={specialRequirements} onChange={(e) => setSpecialRequirements(e.target.value)} placeholder="Insert any specific callouts: tradeshow, demo mode, replanogramming, training, remote support, new hardware, etc." rows={5} />
         </div>
         <div className="flex gap-2">
-          <Button onClick={generateQAEmail}>Generate Email</Button>
+          <Button onClick={generateQAEmail} variant="default">Generate Email</Button>
           <Button variant="outline" onClick={copyToClipboard}>Copy</Button>
         </div>
         {output && (

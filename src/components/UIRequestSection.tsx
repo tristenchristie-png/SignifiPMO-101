@@ -66,10 +66,10 @@ ${brandingDocuments}`;
 
   return (
     <Card id="ui-request-section" className="template-section w-full max-w-2xl mx-auto">
-      <CardHeader>
+      <CardHeader className="bg-secondary text-secondary-foreground">
         <CardTitle>UI Request</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-4 p-6">
         <div>
           <Label htmlFor="cp">CP</Label>
           <Input id="cp" value={cp} onChange={(e) => setCp(e.target.value)} placeholder="e.g., CP-123" />
@@ -175,7 +175,7 @@ ${brandingDocuments}`;
           <Textarea id="brandingDocuments" value={brandingDocuments} onChange={(e) => setBrandingDocuments(e.target.value)} placeholder="List branding documents (e.g., Logo, Fonts, Color Codes, SOW)" rows={5} />
         </div>
         <div className="flex gap-2">
-          <Button onClick={generateUIEmail}>Generate Email</Button>
+          <Button onClick={generateUIEmail} variant="default">Generate Email</Button>
           <Button variant="outline" onClick={copyToClipboard}>Copy</Button>
         </div>
         {output && (
