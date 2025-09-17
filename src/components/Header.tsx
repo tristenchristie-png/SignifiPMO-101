@@ -8,7 +8,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ selectedTemplate, onTemplateChange }) => {
   return (
-    <header className="bg-primary text-primary-foreground p-4 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
+    <header className="bg-primary text-primary-foreground p-4 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-4 w-full">
       <h1 className="text-2xl font-bold">Multi-Template Generator</h1>
       <div className="flex items-center gap-2">
         <label htmlFor="templateSelect" className="text-lg">Select Template:</label>

@@ -16,7 +16,7 @@ const Index: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col items-center bg-background text-foreground">
       <Header selectedTemplate={selectedTemplate} onTemplateChange={handleTemplateChange} />
-      <main className="flex-grow container mx-auto p-4 flex flex-col items-center justify-center">
+      <main className="flex-grow container mx-auto p-4 flex flex-col items-center justify-center bg-muted">
         {selectedTemplate === 'installation' && <InstallationTicketSection />}
         {selectedTemplate === 'qa' && <QAChecklistSection />}
         {selectedTemplate === 'ui' && <UIRequestSection />}
