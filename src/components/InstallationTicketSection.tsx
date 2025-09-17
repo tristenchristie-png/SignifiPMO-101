@@ -102,7 +102,7 @@ ${scopeOfWork}`;
   };
 
   return (
-    <Card id="installation-ticket-section" className="template-section w-full max-w-2xl mx-auto">
+    <Card id="installation-ticket-section" className="template-section w-full max-w-2xl mx-auto bg-card">
       <CardHeader>
         <CardTitle>Installation Ticket</CardTitle>
       </CardHeader>

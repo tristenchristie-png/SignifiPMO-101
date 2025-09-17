@@ -336,7 +336,7 @@ const UATExcelGeneratorSection: React.FC = () => {
   const currentTemplate = machineTemplates[selectedMachineType];
 
   return (
-    <Card id="uat-generator-section" className="template-section w-full max-w-3xl mx-auto">
+    <Card id="uat-generator-section" className="template-section w-full max-w-3xl mx-auto bg-card">
       <CardHeader>
         <CardTitle>UAT Excel Generator</CardTitle>
       </CardHeader>

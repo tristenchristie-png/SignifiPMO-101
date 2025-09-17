@@ -100,7 +100,7 @@ ${specialRequirements}`;
   };
 
   return (
-    <Card id="qa-checklist-section" className="template-section w-full max-w-2xl mx-auto">
+    <Card id="qa-checklist-section" className="template-section w-full max-w-2xl mx-auto bg-card">
       <CardHeader>
         <CardTitle>QA Checklist</CardTitle>
       </CardHeader>
