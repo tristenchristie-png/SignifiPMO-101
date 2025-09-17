@@ -5,31 +5,31 @@
 @layer base {
   :root {
     --background: 0 0% 100%; /* White background */
-    --foreground: 222.2 47.4% 11.2%; /* Dark text for white background */
+    --foreground: 222.2 47.4% 11.2%; /* Dark text */
 
-    --card: 222.2 84% 4.9%; /* Dark card background for muted section */
-    --card-foreground: 210 40% 98%; /* Light text for cards */
+    --card: 0 0% 100%; /* White card background */
+    --card-foreground: 222.2 47.4% 11.2%; /* Dark text for cards */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47.4% 11.2%;
+    --popover: 0 0% 100%; /* White popover background */
+    --popover-foreground: 222.2 47.4% 11.2%; /* Dark text for popovers */
 
     --primary: 0 84.2% 60.2%; /* Vibrant Red (for header) */
     --primary-foreground: 0 0% 100%; /* White text for primary */
 
-    --secondary: 217.2 32.6% 17.5%; /* Dark secondary for contrast */
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%; /* Light gray secondary */
+    --secondary-foreground: 222.2 47.4% 11.2%; /* Dark text for secondary */
 
-    --muted: 0 0% 0%; /* Black for the main content area */
-    --muted-foreground: 0 0% 100%; /* White text for muted section */
+    --muted: 210 40% 96.1%; /* Light gray for main content area */
+    --muted-foreground: 215.4 16.3% 46.9%; /* Dark text for muted section */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 210 40% 96.1%; /* Light gray accent */
+    --accent-foreground: 222.2 47.4% 11.2%; /* Dark text for accent */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%; /* Red destructive */
+    --destructive-foreground: 210 40% 98%; /* Light text for destructive */
 
-    --border: 214.3 31.8% 91.4%; /* Light border for white background */
-    --input: 214.3 31.8% 91.4%; /* Light input for white background */
+    --border: 214.3 31.8% 91.4%; /* Light border */
+    --input: 214.3 31.8% 91.4%; /* Light input */
     --ring: 0 84.2% 60.2%; /* Red ring for focus */
 
     --radius: 0.5rem;
